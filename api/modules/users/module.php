@@ -6,6 +6,7 @@
 //! The global User Variable
 global $user;
 
+users_bootMeUp();
 /** @} */
 /** @ingroup Constants
  *  @{
@@ -39,7 +40,6 @@ define('ERROR_USERS_NO_TOKEN', '-302');
  * Boot up procedure
  */
 function users_bootMeUp() {
-
     users_loadCurrentUser();
 }
 
@@ -50,6 +50,7 @@ function users_loadCurrentUser() {
     global $user;
     # If I am running on emebed mode I don't have any users, so I will just load it from the session
     $user = users_load(array('userName' => params_get('iam', '')));
+    
     /*
       if(conf_get('embeded', 'core', false)){
       $user = users_createBasic();
@@ -234,14 +235,13 @@ function users_openAccess() {
 }
 
 function users_loggedIn() {
-
     global $user;
-
     grace_debug("Confirm that the user is logged in");
 
     # The user must exist
     # If no user was loaded it could be that I am running in embeded mode
     if ($user->idUser == 0 && conf_get('embeded', 'core', false) == false) {
+
         grace_debug("User id = 0, this can't be logged in");
         return false;
     }
@@ -403,7 +403,7 @@ function md5_hash($pwd) {
 function users_load($by = array()) {
 
     grace_debug("Loading user");
-
+    
     # Which params do you want to use?
     # I need one at least
     if (count($by) == 0) {
@@ -427,7 +427,6 @@ function users_load($by = array()) {
         grace_debug("Unable to locate user");
         return users_createBasic();
     }
-
     return $user;
 }
 
