@@ -1,3 +1,5 @@
+![https://crlibre.org](https://crlibre.org/wp-content/uploads/2018/03/cropped-CRLibre-Logo_15-1.png)
+
 ## Sobre CRLibre
 Somos una comunidad de individuos y organizaciones que voluntariamente unimos esfuerzos para colaborar y compartir conocimiento, crear software libre para resolver problemas que enfrentamos en nuestra realidad en Costa Rica.
 
@@ -17,7 +19,7 @@ De forma complementaria al proyecto de este API creamos dos repositorios relacio
 * Archivos y recursos comunes para cualquier proyecto https://github.com/CRLibre/fe-hacienda-cr-misc
 
 ### ¿Por qué un API para conectarse a los del Ministerio de Hacienda?
-Para la [implementación de la Factura Electrónica](https://www.hacienda.go.cr/contenido/14350-factura-electronica), el Ministerio de Hacienda puso a disposición [documentación técnica e interfaces de programación sofisticados](https://tribunet.hacienda.go.cr/FormatosYEstructurasXML.jsp) que muchos programadores encuentran difíciles de comprender y utilizar. Nuestro objetivo es crear un software que simplifique el proceso a desarrolladores de cumplir con las [resoluciones del Ministerio](https://tribunet.hacienda.go.cr/docs/esquemas/2016/v4.2/ResolucionComprobantesElectronicosDGT-R-48-2016_4.2.pdf), de forma más ágil, desde cualquier lenguaje de programación y sin depender de intermediarios al poder instalar esta pieza de [software libre](https://es.wikipedia.org/wiki/Software_libre) en un servidor propio manteniendo control de sus datos sensibles.
+Para la [implementación de la Factura Electrónica](https://www.hacienda.go.cr/contenido/14350-factura-electronica), el Ministerio de Hacienda puso a disposición [documentación técnica e interfaces de programación sofisticados](https://www.hacienda.go.cr/ATV/ComprobanteElectronico/frmAnexosyEstructuras.aspx) que muchos programadores encuentran difíciles de comprender y utilizar. Nuestro objetivo es crear un software que simplifique el proceso a desarrolladores de cumplir con las [resoluciones del Ministerio](http://web.archive.org/web/20191219053048if_/https://www.hacienda.go.cr/ATV/ComprobanteElectronico/docs/esquemas/2016/v4.3/Resoluci%C3%B3n_General_sobre_disposiciones_t%C3%A9cnicas_comprobantes_electr%C3%B3nicos_para_efectos_tributarios.pdf), de forma más ágil, desde cualquier lenguaje de programación y sin depender de intermediarios al poder instalar esta pieza de [software libre](https://es.wikipedia.org/wiki/Software_libre) en un servidor propio manteniendo control de sus datos sensibles.
 
 
 ## Cómo colaborar
@@ -41,11 +43,11 @@ La que se llama www contiene un archivo de configuración, en donde se modifican
 
 ## Requerimientos mínimos
 
-* PHP > 5.5.0
-* MySQL o MariaDB
+* PHP >= 5.5.0
+* MySQL o MariaDB ([MySQLi](http://php.net/manual/en/book.mysqli.php))
 * [cURL](http://php.net/manual/en/book.curl.php)
 * [php-xml](http://php.net/manual/en/book.simplexml.php)
-* OpenSSL
+* [OpenSSL](http://php.net/manual/en/book.openssl.php)
 
 ### Conectores/Clientes del API
 * Conector en .NET https://github.com/CRLibre/fe-hacienda-cr-dotnet
@@ -84,3 +86,6 @@ La que se llama www contiene un archivo de configuración, en donde se modifican
 * Envió a Hacienda del xml de Tiquete Electronico
 * Envió a Hacienda del xml de Mensaje Aceptación (Aceptación total, Parcialmente y Rechazo)
 * Consulta de estado de los comprobantes
+
+#### Observations
+* ALTER TABLE files MODIFY COLUMN md5 VARCHAR(40);
